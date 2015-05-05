@@ -25,3 +25,12 @@ Vagrantfile
 ###########################
 scraping.sublime-workspace
 scraping.sublime-project
+
+# Logging Files #
+#################
+*.log
+
+# output data #
+###############
+*.csv
+*.json
