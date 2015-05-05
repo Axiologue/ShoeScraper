@@ -22,13 +22,18 @@ class AdidasSpider(CrawlSpider):
     ]
 
     rules = (
+            # Rule to go to the single product pages and run the parsing function
+            # Excludes links that end in _W.html or _M.html, because they point to 
+            # configuration pages that aren't scrapeable (and are mostly redundant anyway)
             Rule(LinkExtractor(restrict_xpaths='//a[contains(@class,"product-link")]',
                 deny=('_[WM]\.html',)),
                 callback='singleProductParse'),
+            # Rule to follow arrow to next product grid
             Rule(LinkExtractor(restrict_xpaths='//li[@class="pagging-arrow right-arrow"]'),
                 follow=True),
         )
 
+    # Function to parse information from the product grid. Currently unused
     def productPageParse(self,response):
         products = response.css('div[id^="product-"]')[1:]
         for p in products:
@@ -45,6 +50,7 @@ class AdidasSpider(CrawlSpider):
             item['image_link'] = p.css('img.show::attr(data-stackmobileview)').extract()[0]
             yield item
 
+    # Function to parse information from a single product page
     def singleProductParse(self,response):
         item = ProductItem()
         item['brand'] = 'Adidas'
