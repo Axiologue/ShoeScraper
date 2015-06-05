@@ -17,6 +17,7 @@ NEWSPIDER_MODULE = 'scrapenscroll.spiders'
 #USER_AGENT = 'scrapenscroll (+http://www.yourdomain.com)'
 
 ITEM_PIPELINES = {
-    'scrapenscroll.pipelines.DuplicatesPipeline': 300,
-    'scrapenscroll.pipelines.CSVPipeline': 400,
+    #'scrapenscroll.pipelines.DuplicatesPipeline': 300,
+    'scrapenscroll.pipelines.DuplicateLinksPipeline': 300,
+    #'scrapenscroll.pipelines.CSVPipeline': 400,
 }
