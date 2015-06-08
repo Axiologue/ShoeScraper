@@ -54,18 +54,16 @@ class AsicsSpider(CrawlSpider):
         item = ProductItem()
         item['brand'] = 'Asics'
         item['name'] = response.css('h1').xpath('text()').extract()[0]
+        item['name'] = item['name'].encode('utf-8')
+        item['name'] = item['name'].replace("\xe2\x84\xa2","")
+        item['name'] = item['name'].replace("\xc2\xae","")
 
 
         #TRYING AND FAILING TO DELETE UNICODE CHARACTERS
-        #item['name'] = name.encode('utf-8')
-
         # item['name'] = receivedbytes.decode("utf-8")
         # outbytes = item['name'].encode("utf-8")
-
         # item['name'].encode(encoding='UTF-8',errors='strict')
-
         # item['name'] = item[u'name']
-
         # item['name'] = item['name'].replace("charcters for trademark were here","")
         # item['name'] = item['name'].replace("characters for registered symbol were here","")
         desc = response.css('h4.product_type').xpath('text()').extract()[0].strip()
@@ -79,5 +77,6 @@ class AsicsSpider(CrawlSpider):
             item['division'] = desc.replace("\'s","").replace("\'","")
             item['category'] = 'None'
         item['price'] = response.css('li.price').xpath('text()').extract()[0].strip()
+        item['price'] = item['price'].replace("$", "")
         item['image_link'] = response.css('meta[property = "og:image"]::attr(content)').extract()[0]
         return item
