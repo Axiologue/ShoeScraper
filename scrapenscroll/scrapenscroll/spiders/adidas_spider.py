@@ -33,22 +33,6 @@ class AdidasSpider(CrawlSpider):
                 follow=True),
         )
 
-    # Function to parse information from the product grid. Currently unused
-    def productPageParse(self,response):
-        products = response.css('div[id^="product-"]')[1:]
-        for p in products:
-            item = ProductItem()
-            item['name'] = p.css('span.title').xpath('text()').extract()[0]
-            item['brand'] = 'Adidas'
-            desc = p.css('span.subtitle').xpath('text()').extract()[0]
-            try:
-                item['division'], item['category'] = desc.split(" ",1)
-            except ValueError:
-                item['category'] = desc
-                item['division'] = 'None'
-            item['price'] = p.css('span.salesprice').xpath('text()').extract()[0].strip()
-            item['image_link'] = p.css('img.show::attr(data-stackmobileview)').extract()[0]
-            yield item
 
     # Function to parse information from a single product page
     def singleProductParse(self,response):
@@ -61,6 +45,7 @@ class AdidasSpider(CrawlSpider):
         except ValueError:
             item['category'] = desc
             item['division'] = 'None'
+        item['division'] = item['division'].replace("'s","")
         item['price'] = response.css('span.sale-price').xpath('text()').extract()[0].strip()
         item['image_link'] = response.css('img.productimagezoomable::attr(src)').extract()[0]
         return item
