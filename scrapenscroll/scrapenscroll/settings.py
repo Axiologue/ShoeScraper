@@ -18,6 +18,6 @@ NEWSPIDER_MODULE = 'scrapenscroll.spiders'
 
 ITEM_PIPELINES = {
     'scrapenscroll.pipelines.DuplicatesPipeline': 300,
-    #'scrapenscroll.pipelines.DuplicatesLinksPipeline': 300,
+    #'scrapenscroll.pipelines.DuplicateLinksPipeline': 300,
     'scrapenscroll.pipelines.CSVPipeline': 400,
 }

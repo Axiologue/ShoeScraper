@@ -17,13 +17,13 @@ NEWSPIDER_MODULE = 'scrapenscroll.spiders'
 #USER_AGENT = 'scrapenscroll (+http://www.yourdomain.com)'
 
 ITEM_PIPELINES = {
-<<<<<<< HEAD
     'scrapenscroll.pipelines.DuplicatesPipeline': 300,
+<<<<<<< HEAD
     #'scrapenscroll.pipelines.DuplicatesLinksPipeline': 300,
     'scrapenscroll.pipelines.CSVPipeline': 400,
-=======
-    #'scrapenscroll.pipelines.DuplicatesPipeline': 300,
-    'scrapenscroll.pipelines.DuplicateLinksPipeline': 300,
-    #'scrapenscroll.pipelines.CSVPipeline': 400,
->>>>>>> master
 }
+=======
+    #'scrapenscroll.pipelines.DuplicateLinksPipeline': 300,
+    'scrapenscroll.pipelines.CSVPipeline': 400,
+}
+>>>>>>> 78054725ec81feb7b264434e95fdac040200bf17
