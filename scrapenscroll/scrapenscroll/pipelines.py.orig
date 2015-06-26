@@ -22,9 +22,14 @@ class DuplicatesPipeline(object):
             self.product_pairs.add(check)
             return item 
 
+<<<<<<< HEAD
 
 # Pipeline to remove duplicate objects
 class DuplicatesLinksPipeline(object):
+=======
+# Pipeline to remove duplicate objects
+class DuplicateLinksPipeline(object):
+>>>>>>> master
     def __init__(self):
         self.checked_links = set()
 

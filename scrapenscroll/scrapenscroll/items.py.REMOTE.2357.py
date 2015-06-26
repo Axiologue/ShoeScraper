@@ -17,4 +17,4 @@ class ProductItem(scrapy.Item):
     price = scrapy.Field()
 
 class LinkItem(scrapy.Item):
-	url = scrapy.Field()
+    url = scrapy.Field()

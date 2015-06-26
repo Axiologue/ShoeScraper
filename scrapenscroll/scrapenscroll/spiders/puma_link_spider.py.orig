@@ -1,0 +1,80 @@
+<<<<<<< HEAD
+
+import scrapy
+import json 
+=======
+import scrapy
+
+import json
+
+>>>>>>> master
+
+from scrapenscroll.items import LinkItem
+
+
+## LOGGING to file
+#import logging
+#from scrapy.log import ScrapyFileLogObserver
+
+#logfile = open('testlog.log', 'w')
+#log_observer = ScrapyFileLogObserver(logfile, level=logging.DEBUG)
+#log_observer.start()
+
+# Spider for crawling Puma website for shoes
+class PumaLinkSpider(scrapy.Spider):
+    name = "pumaLinks"
+    allowed_domains = ["puma.com"]
+    start_urls = [
+        "http://us.puma.com/en_US/men/shoes",
+        "http://us.puma.com/en_US/women/shoes",
+        "http://us.puma.com/en_US/kids/boys/shoes",
+<<<<<<< HEAD
+        "http://us.puma.com/en_US/kids/girls/shoes"
+
+    ]
+=======
+        "http://us.puma.com/en_US/kids/girls/shoes",
+    ]
+    
+>>>>>>> master
+
+    # Function to parse information from a single product page
+    def parse(self,response):
+        # Get All Script tags
+        scripts = response.css('script').xpath('text()').extract()
+
+        # Find tag that has 'pageData'
+        data = filter(lambda k: 'pageData' in k,scripts)[0]
+
+        # slice out 'pageData' variable content
+        # So we can turn it into a python dict using json.loads
+        js = data[data.index('{'):data.index(';')]
+
+        # convert to python dictionary
+<<<<<<< HEAD
+        js = json.loads(js)
+=======
+        js = json.loads(js) 
+>>>>>>> master
+
+        items = js['items']
+
+        for item in items:
+            name = item['productName'].replace(' ','-').replace("'",'')
+            productID = item['productID']
+
+            url = "http://us.puma.com/en_US/pd/" + name + '/' + productID + '.html'
+<<<<<<< HEAD
+            #url = "http:us.puma.com/en_US/pd/%s/%s.html" % (name, productID)
+
+=======
+>>>>>>> master
+
+            link = LinkItem();
+            link['url'] = url
+
+<<<<<<< HEAD
+            yield link 
+=======
+            yield link
+>>>>>>> master
