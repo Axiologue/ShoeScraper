@@ -13,7 +13,7 @@ from scrapenscroll.items import ProductItem
 #log_observer = ScrapyFileLogObserver(logfile, level=logging.DEBUG)
 #log_observer.start()
 
-# Spider for crawling Adidas website for shoes
+# Spider for crawling Reebok website for shoes
 class ReebokSpider(CrawlSpider):
     name = "reebok"
     allowed_domains = ["reebok.com"]
@@ -40,7 +40,7 @@ class ReebokSpider(CrawlSpider):
         for p in products:
             item = ProductItem()
             item['name'] = p.css('span.title').xpath('text()').extract()[0]
-            item['brand'] = 'Adidas'
+            item['brand'] = 'Reebok'
             desc = p.css('span.subtitle').xpath('text()').extract()[0]
             try:
                 item['division'], item['category'] = desc.split(" ",1)

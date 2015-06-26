@@ -22,6 +22,21 @@ class DuplicatesPipeline(object):
             self.product_pairs.add(check)
             return item 
 
+
+# Pipeline to remove duplicate objects
+class DuplicatesLinksPipeline(object):
+    def __init__(self):
+        self.checked_links = set()
+
+    def process_item(self,item,spider):
+        check = item['url']
+
+        if check in self.checked_links:
+            raise DropItem("Already added %s" % item)
+        else:
+            self.checked_links.add(check)
+            return item 
+
 # Pipeline to make sure CSV columns export in the right order
 class CSVPipeline(object):
 
