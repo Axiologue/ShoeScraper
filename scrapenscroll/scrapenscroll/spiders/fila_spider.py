@@ -14,7 +14,7 @@ from scrapenscroll.items import ProductItem
 #log_observer.start()
 
 # Spider for crawling Reebok website for shoes
-class ReebokSpider(CrawlSpider):
+class FilaSpider(CrawlSpider):
     name = "fila"
     allowed_domains = ["fila.com"]
     start_urls = [
