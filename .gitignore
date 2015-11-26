@@ -34,3 +34,7 @@ scraping.sublime-project
 ###############
 *.csv
 *.json
+
+# editor files #
+################
+*.swp

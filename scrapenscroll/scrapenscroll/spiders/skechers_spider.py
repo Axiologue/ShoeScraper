@@ -12,13 +12,13 @@ class SkechersSpider(scrapy.Spider):
     allowed_domains = ["skechers.com"]
 
     #Turn links into list
-    f = open('skechersLinks.csv')
-    reader = csv.reader(f)
-    skechers_links = list(reader)
-    skechers_links = [x[0] for x in skechers_links]
-    skechers_links = skechers_links[1:]
+    #f = open('skechersLinks.csv')
+    #reader = csv.reader(f)
+    #skechers_links = list(reader)
+    #skechers_links = [x[0] for x in skechers_links]
+    #skechers_links = skechers_links[1:]
     #print(len(links))
-    start_urls = skechers_links
+    #start_urls = skechers_links
 
 
     # Function to parse information from a single product page
